@@ -75,7 +75,6 @@ public class RtpSocket implements Runnable {
 
 	/**
 	 * This RTP socket implements a buffering mechanism relying on a FIFO of buffers and a Thread.
-	 * @throws IOException
 	 */
 	public RtpSocket() {
 		

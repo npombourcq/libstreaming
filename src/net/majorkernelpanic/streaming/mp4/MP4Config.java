@@ -26,7 +26,7 @@ import android.util.Base64;
 import android.util.Log;
 
 /**
- * Finds SPS & PPS parameters in mp4 file.
+ * Finds SPS &amp; PPS parameters in mp4 file.
  */
 public class MP4Config {
 
@@ -54,7 +54,7 @@ public class MP4Config {
 	}
 	
 	/**
-	 * Finds SPS & PPS parameters inside a .mp4.
+	 * Finds SPS &amp; PPS parameters inside a .mp4.
 	 * @param path Path to the file to analyze
 	 * @throws IOException
 	 * @throws FileNotFoundException

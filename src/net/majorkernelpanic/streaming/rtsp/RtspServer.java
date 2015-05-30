@@ -51,7 +51,7 @@ import android.util.Log;
 /**
  * Implementation of a subset of the RTSP protocol (RFC 2326).
  * 
- * It allows remote control of an android device cameras & microphone.
+ * It allows remote control of an android device cameras &amp; microphone.
  * For each connected client, a Session is instantiated.
  * The Session will start or stop streams according to what the client wants.
  * 

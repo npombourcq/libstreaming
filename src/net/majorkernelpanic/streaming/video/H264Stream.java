@@ -66,7 +66,6 @@ public class H264Stream extends VideoStream {
 	/**
 	 * Constructs the H.264 stream.
 	 * @param cameraId Can be either CameraInfo.CAMERA_FACING_BACK or CameraInfo.CAMERA_FACING_FRONT
-	 * @throws IOException
 	 */
 	public H264Stream(int cameraId) {
 		super(cameraId);

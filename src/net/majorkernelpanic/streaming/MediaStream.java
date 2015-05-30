@@ -202,13 +202,13 @@ public abstract class MediaStream implements Stream {
 	 * Sets the streaming method that will be used.
 	 * 
 	 * If the mode is set to {@link #MODE_MEDIARECORDER_API}, raw audio/video will be encoded 
-	 * using the MediaRecorder API. <br />
+	 * using the MediaRecorder API.
 	 * 
 	 * If the mode is set to {@link #MODE_MEDIACODEC_API} or to {@link #MODE_MEDIACODEC_API_2}, 
-	 * audio/video will be encoded with using the MediaCodec. <br />
+	 * audio/video will be encoded with using the MediaCodec.
 	 * 
 	 * The {@link #MODE_MEDIACODEC_API_2} mode only concerns {@link VideoStream}, it makes 
-	 * use of the createInputSurface() method of the MediaCodec API (Android 4.3 is needed there). <br />
+	 * use of the createInputSurface() method of the MediaCodec API (Android 4.3 is needed there).
 	 * 
 	 * @param mode Can be {@link #MODE_MEDIARECORDER_API}, {@link #MODE_MEDIACODEC_API} or {@link #MODE_MEDIACODEC_API_2} 
 	 */

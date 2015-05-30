@@ -40,11 +40,12 @@ import android.util.Base64;
 import android.util.Log;
 
 /**
- * 
  * The purpose of this class is to detect and by-pass some bugs (or underspecified configuration) that
- * encoders available through the MediaCodec API may have. <br />
+ * encoders available through the MediaCodec API may have.
+ *
  * Feeding the encoder with a surface is not tested here.
- * Some bugs you may have encountered:<br />
+ *
+ * Some bugs you may have encountered:
  * <ul>
  * <li>U and V panes reversed</li>
  * <li>Some padding is needed after the Y pane</li>

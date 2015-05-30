@@ -41,26 +41,26 @@ import android.os.HandlerThread;
 import android.os.Looper;
 
 /**
- * You should instantiate this class with the {@link SessionBuilder}.<br />
- * This is the class you will want to use to stream audio and or video to some peer using RTP.<br />
+ * You should instantiate this class with the {@link SessionBuilder}.
+ *
+ * This is the class you will want to use to stream audio and or video to some peer using RTP.
  * 
  * It holds a {@link VideoStream} and a {@link AudioStream} together and provides 
  * synchronous and asynchronous functions to start and stop those steams.
- * You should implement a callback interface {@link Callback} to receive notifications and error reports.<br />
+ * You should implement a callback interface {@link Callback} to receive notifications and error reports.
  * 
  * If you want to stream to a RTSP server, you will need an instance of this class and hand it to a {@link RtspClient}.
  * 
  * If you don't use the RTSP protocol, you will still need to send a session description to the receiver 
  * for him to be able to decode your audio/video streams. You can obtain this session description by calling 
  * {@link #configure()} or {@link #syncConfigure()} to configure the session with its parameters 
- * (audio samplingrate, video resolution) and then {@link Session#getSessionDescription()}.<br />
+ * (audio samplingrate, video resolution) and then {@link Session#getSessionDescription()}.
  * 
  * See the example 2 here: https://github.com/fyhertz/libstreaming-examples to 
- * see an example of how to get a SDP.<br />
+ * see an example of how to get a SDP.
  * 
  * See the example 3 here: https://github.com/fyhertz/libstreaming-examples to 
- * see an example of how to stream to a RTSP server.<br />
- * 
+ * see an example of how to stream to a RTSP server.
  */
 public class Session {
 
@@ -231,7 +231,8 @@ public class Session {
 	}	
 
 	/** 
-	 * The destination address for all the streams of the session. <br />
+	 * The destination address for all the streams of the session.
+	 *
 	 * Changes will be taken into account the next time you start the session.
 	 * @param destination The destination address
 	 */
@@ -240,7 +241,8 @@ public class Session {
 	}
 
 	/** 
-	 * Set the TTL of all packets sent during the session. <br />
+	 * Set the TTL of all packets sent during the session.
+	 *
 	 * Changes will be taken into account the next time you start the session.
 	 * @param ttl The Time To Live
 	 */
@@ -249,7 +251,8 @@ public class Session {
 	}
 
 	/** 
-	 * Sets the configuration of the stream. <br />
+	 * Sets the configuration of the stream.
+	 *
 	 * You can call this method at any time and changes will take 
 	 * effect next time you call {@link #configure()}.
 	 * @param quality Quality of the stream
@@ -261,7 +264,8 @@ public class Session {
 	}
 
 	/**
-	 * Sets a Surface to show a preview of recorded media (video). <br />
+	 * Sets a Surface to show a preview of recorded media (video).
+	 *
 	 * You can call this method at any time and changes will take 
 	 * effect next time you call {@link #start()} or {@link #startPreview()}.
 	 */
@@ -277,7 +281,8 @@ public class Session {
 	}
 
 	/** 
-	 * Sets the orientation of the preview. <br />
+	 * Sets the orientation of the preview.
+	 *
 	 * You can call this method at any time and changes will take 
 	 * effect next time you call {@link #configure()}.
 	 * @param orientation The orientation of the preview
@@ -289,7 +294,8 @@ public class Session {
 	}	
 
 	/** 
-	 * Sets the configuration of the stream. <br />
+	 * Sets the configuration of the stream.
+	 *
 	 * You can call this method at any time and changes will take 
 	 * effect next time you call {@link #configure()}.
 	 * @param quality Quality of the stream
@@ -375,7 +381,7 @@ public class Session {
 	}	
 
 	/** 
-	 * Does the same thing as {@link #configure()}, but in a synchronous manner. <br />
+	 * Does the same thing as {@link #configure()}, but in a synchronous manner.
 	 * Throws exceptions in addition to calling a callback 
 	 * {@link Callback#onSessionError(int, int, Exception)} when
 	 * an error occurs.	
@@ -432,7 +438,8 @@ public class Session {
 	}
 
 	/** 
-	 * Starts a stream in a synchronous manner. <br />
+	 * Starts a stream in a synchronous manner.
+	 *
 	 * Throws exceptions in addition to calling a callback.
 	 * @param id The id of the stream to start
 	 **/
@@ -484,7 +491,8 @@ public class Session {
 	}	
 
 	/** 
-	 * Does the same thing as {@link #start()}, but in a synchronous manner. <br /> 
+	 * Does the same thing as {@link #start()}, but in a synchronous manner.
+	 *
 	 * Throws exceptions in addition to calling a callback.
 	 **/
 	public void syncStart() 			
@@ -537,7 +545,8 @@ public class Session {
 	}
 
 	/**
-	 * Asynchronously starts the camera preview. <br />
+	 * Asynchronously starts the camera preview.
+	 *
 	 * You should of course pass a {@link SurfaceView} to {@link #setSurfaceView(SurfaceView)}
 	 * before calling this method. Otherwise, the {@link Callback#onSessionError(int, int, Exception)}
 	 * callback will be called with {@link #ERROR_INVALID_SURFACE}.
@@ -583,9 +592,12 @@ public class Session {
 		});
 	}	
 
-	/**	Switch between the front facing and the back facing camera of the phone. <br />
-	 * If {@link #startPreview()} has been called, the preview will be  briefly interrupted. <br />
-	 * If {@link #start()} has been called, the stream will be  briefly interrupted.<br />
+	/**	Switch between the front facing and the back facing camera of the phone.
+	 *
+	 * If {@link #startPreview()} has been called, the preview will be  briefly interrupted.
+	 *
+	 * If {@link #start()} has been called, the stream will be  briefly interrupted.
+	 *
 	 * To find out which camera is currently selected, use {@link #getCamera()}
 	 **/
 	public void switchCamera() {
@@ -613,7 +625,8 @@ public class Session {
 	}
 
 	/**
-	 * Returns the id of the camera currently selected. <br />
+	 * Returns the id of the camera currently selected.
+	 *
 	 * It can be either {@link CameraInfo#CAMERA_FACING_BACK} or 
 	 * {@link CameraInfo#CAMERA_FACING_FRONT}.
 	 */
@@ -624,6 +637,7 @@ public class Session {
 
 	/** 
 	 * Toggles the LED of the phone if it has one.
+	 *
 	 * You can get the current state of the flash with 
 	 * {@link Session#getVideoTrack()} and {@link VideoStream#getFlashState()}.
 	 **/
@@ -642,7 +656,7 @@ public class Session {
 		});
 	}	
 
-	/** Deletes all existing tracks & release associated resources. */
+	/** Deletes all existing tracks &amp; release associated resources. */
 	public void release() {
 		removeAudioTrack();
 		removeVideoTrack();

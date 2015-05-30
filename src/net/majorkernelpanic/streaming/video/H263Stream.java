@@ -49,8 +49,7 @@ public class H263Stream extends VideoStream {
 
 	/**
 	 * Constructs the H.263 stream.
-	 * @param cameraId Can be either CameraInfo.CAMERA_FACING_BACK or CameraInfo.CAMERA_FACING_FRONT 
-	 * @throws IOException
+	 * @param cameraId Can be either CameraInfo.CAMERA_FACING_BACK or CameraInfo.CAMERA_FACING_FRONT
 	 */	
 	public H263Stream(int cameraId) {
 		super(cameraId);

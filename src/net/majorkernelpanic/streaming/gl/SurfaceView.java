@@ -35,21 +35,20 @@ import android.view.SurfaceHolder;
 
 /**
  * An enhanced SurfaceView in which the camera preview will be rendered. 
- * This class was needed for two reasons. <br /> 
+ * This class was needed for two reasons.
  * 
  * First, it allows to use to feed MediaCodec with the camera preview 
  * using the surface-to-buffer method while rendering it in a surface 
  * visible to the user. To force the surface-to-buffer method in 
  * libstreaming, call {@link MediaStream#setStreamingMethod(byte)}
- * with {@link MediaStream#MODE_MEDIACODEC_API_2}. <br /> 
+ * with {@link MediaStream#MODE_MEDIACODEC_API_2}.
  * 
  * Second, it allows to force the aspect ratio of the SurfaceView 
  * to match the aspect ratio of the camera preview, so that the 
  * preview do not appear distorted to the user of your app. To do 
  * that, call {@link SurfaceView#setAspectRatioMode(int)} with
  * {@link SurfaceView#ASPECT_RATIO_PREVIEW} after creating your 
- * {@link SurfaceView}. <br />
- * 
+ * {@link SurfaceView}.
  */
 public class SurfaceView extends android.view.SurfaceView implements Runnable, OnFrameAvailableListener, SurfaceHolder.Callback {
 
@@ -242,8 +241,8 @@ public class SurfaceView extends android.view.SurfaceView implements Runnable, O
 		}
 		
 		/**
-		 * Measure with the aspect ratio given at construction.<br />
-		 * <br />
+		 * Measure with the aspect ratio given at construction.
+		 *
 		 * After measuring, get the width and height with the {@link #getMeasuredWidth()}
 		 * and {@link #getMeasuredHeight()} methods, respectively.
 		 * @param widthMeasureSpec The width <tt>MeasureSpec</tt> passed in your <tt>View.onMeasure()</tt> method
@@ -254,8 +253,8 @@ public class SurfaceView extends android.view.SurfaceView implements Runnable, O
 		}
 
 		/**
-		 * Measure with a specific aspect ratio<br />
-		 * <br />
+		 * Measure with a specific aspect ratio
+		 *
 		 * After measuring, get the width and height with the {@link #getMeasuredWidth()}
 		 * and {@link #getMeasuredHeight()} methods, respectively.
 		 * @param widthMeasureSpec The width <tt>MeasureSpec</tt> passed in your <tt>View.onMeasure()</tt> method

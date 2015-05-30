@@ -1,0 +1,112 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+group = GROUP
+version = VERSION_NAME
+
+repositories {
+    jcenter()
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+    
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        androidTest.setRoot('tests')
+    }
+}
+
+afterEvaluate { project -> 
+    task androidJavadoc(type: Javadoc) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += files(android.bootClasspath)
+    }
+
+    task androidJavadocJar(type: Jar, dependsOn: androidJavadoc) {
+        classifier = 'javadoc'
+        from androidJavadoc.destinationDir
+    }
+
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+    android.libraryVariants.all { variant ->
+        def name = variant.name.capitalize()
+        task "jar${name}"(type: Jar, dependsOn: variant.javaCompile) {
+            from variant.javaCompile.destinationDir
+        }
+    }
+
+    artifacts {
+        archives androidJavadocJar
+        archives androidSourcesJar
+        archives jarRelease
+    }
+
+    task installArchives(type: Upload) {
+        configuration = configurations.archives
+        repositories {
+            mavenDeployer {
+                repository url: "file://${System.properties['user.home']}/.m2/repository"
+                pom.project {
+                    packaging 'aar'
+                    description 'libstreaming is an API that allows you, with only a few lines of code, to stream the camera and/or microphone of an android powered device using RTP over UDP.'
+                    url 'https://github.com/fyhertz/libstreaming'
+                    inceptionYear '2013'
+                    
+                    scm {
+                        url 'https://github.com/fyhertz/libstreaming.git'
+                        connection 'scm:git:https://github.com/fyhertz/libstreaming.git'
+                        developerConnection 'scm:git:git://github.com/fyhertz/libstreaming.git'
+                    }
+                
+                    developers {
+                        developer {
+                            id 'fyhertz'
+                            name 'fyhertz'
+                            email 'fyhertz@gmail.com'
+                            roles {
+                                role 'developer'
+                            }
+                        }
+                    }
+                    
+                    issueManagement {
+                        system 'GitHub Issues'
+                        url 'https://github.com/fyhertz/libstreaming/issues'
+                    }
+                
+                    licenses {
+                        license {
+                            name 'GNU General Public License Version 3'
+                            url 'http://www.gnu.org/licenses/gpl.html'
+                            distribution 'repo'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
